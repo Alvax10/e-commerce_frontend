@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ProductsComp } from "components/products/styled";
 import { SearchLayout } from "components/SearchLayout/index";
 
-const productsPage = () => {
+const ProductsPage = () => {
 
     const [data, setData] = useState(null);
     const getData = (queryValue) => {
@@ -14,4 +14,4 @@ const productsPage = () => {
     </SearchLayout>;
 }
 
-export default productsPage;
+export default ProductsPage;

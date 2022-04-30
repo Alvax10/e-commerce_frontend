@@ -7,44 +7,31 @@ import { recoilPersist } from 'recoil-persist';
 const { persistAtom } = recoilPersist();
 
 export function useMe() {
-    try {
-        const { data, error } = useSWR("/me", fetchAPI);
-        return data?.data;
-        
-    } catch (err) {
-        console.error("Error de useMe: ", err);
-    }
+
+    const { data, error } = useSWR("/me", fetchAPI);
+    const response = data ? data?.data : null;
+    return response;
 }
 
 export function useProduct(productId: string) {
-    try {
-        // console.log("PRODUCTID: ", productId);
-        const { data, error } = useSWRInmutable("/products/" + productId, fetchAPI);
-        return data;
 
-    } catch (err) {
-        console.error("Error de useProduct: ", err);
-    }
+    const { data, error } = useSWRInmutable("/products/" + productId, fetchAPI);
+    const response = data ? data : null;
+    return response;
 }
 
 export function useProducts() {
-    try {
-        const { data, error } = useSWRInmutable("/products", fetchAPI);
-        return data;
-
-    } catch (err) {
-        console.error("Error de useProduct: ", err);
-    }
+    
+    const { data, error } = useSWRInmutable("/products", fetchAPI);
+    const response = data ? data : null;
+    return response;
 }
 
 export function useGetProductsCart() {
-    try {
-        const { data, error } = useSWR("/user/cart", fetchAPI);
-        return data;
 
-    } catch (err) {
-        console.error("Error de useProduct: ", err);
-    }
+    const { data, error } = useSWR("/user/cart", fetchAPI);
+    const response = data ? data : null;
+    return response;
 }
 
 const productData = atom({
