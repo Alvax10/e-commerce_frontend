@@ -63,29 +63,29 @@ export function Header({ className }) {
     return <div className={className}>
 
         { toggle && token ? <div className="menu-mobile">
-            <a href="false" onClick={closeMenu}>
+            <div onClick={closeMenu} style={{ cursor: "pointer" }}>
                 <CloseXMenu className="close-menu" width={30} height={30} />
-            </a>
+            </div>
 
-            <div onClick={goToIngresar}> <SubtitleStyle className="options" color="#FEFEFE"> Ingresar </SubtitleStyle> </div>
-            <div onClick={goToPerfil}> <SubtitleStyle className="options" color="#FEFEFE"> Mi perfil </SubtitleStyle> </div>
-            <div onClick={goToBuscar}> <SubtitleStyle className="options" color="#FEFEFE"> Buscar </SubtitleStyle> </div>
-            <div onClick={goToFavs}> <SubtitleStyle className="options" color="#FEFEFE"> Mis favoritos </SubtitleStyle> </div>
+            <div onClick={goToIngresar} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Ingresar </SubtitleStyle> </div>
+            <div onClick={goToPerfil} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Mi perfil </SubtitleStyle> </div>
+            <div onClick={goToBuscar} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Buscar </SubtitleStyle> </div>
+            <div onClick={goToFavs} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Mis favoritos </SubtitleStyle> </div>
 
             <p className="email"> { userDataSaved?.email } </p>
-            <div onClick={logout}> <BodyStyle color="#E75A7C"> Cerrar sesión </BodyStyle> </div>
+            <div onClick={logout} style={{ cursor: "pointer" }}> <BodyStyle color="#E75A7C"> Cerrar sesión </BodyStyle> </div>
         </div>
         
         : toggle && !token ?
 
         <div className="menu-mobile">
-            <a href="false" onClick={closeMenu}>
+            <div onClick={closeMenu} style={{ cursor: "pointer" }}>
                 <CloseXMenu className="close-menu" width={30} height={30} />
-            </a>
+            </div>
 
-            <div onClick={goToIngresar}> <SubtitleStyle className="options" color="#FEFEFE"> Ingresar </SubtitleStyle> </div>
-            <div onClick={goToPerfil}> <SubtitleStyle className="options" color="#FEFEFE"> Mi perfil </SubtitleStyle> </div>
-            <div onClick={goToBuscar}> <SubtitleStyle className="options" color="#FEFEFE"> Buscar </SubtitleStyle> </div>
+            <div onClick={goToIngresar} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Ingresar </SubtitleStyle> </div>
+            <div onClick={goToPerfil} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Mi perfil </SubtitleStyle> </div>
+            <div onClick={goToBuscar} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Buscar </SubtitleStyle> </div>
         </div>
         
         : !toggle && token ?
@@ -93,16 +93,16 @@ export function Header({ className }) {
         <div className="container">
             <div className="mobile-menu">
                 <ApxMobileLogo />
-                <a href="false" onClick={openMenu}>
+                <div onClick={openMenu} style={{ cursor: "pointer" }}>
                     <BurgerMenu width={40} height={30} />
-                </a>
+                </div>
             </div>
 
             <div className="desktop-menu">
                 <ApxDesktopLogo />
                 <div className="contains-session">
                     <p style={{ color: "#FEFEFE" }} className="email-header"> { userDataSaved?.email } </p>
-                    <p onClick={logout} style={{ color: "violet", textDecoration: "underline" }} className="logout"> cerrar sesión </p>
+                    <p onClick={logout} style={{ color: "violet", textDecoration: "underline", cursor: "pointer" }} className="logout"> cerrar sesión </p>
                 </div>
             </div>
         </div>
@@ -112,14 +112,14 @@ export function Header({ className }) {
         <div className="container">
             <div className="mobile-menu">
                 <ApxMobileLogo />
-                <a href="false" onClick={openMenu}>
+                <a onClick={openMenu} style={{ cursor: "pointer" }}>
                     <BurgerMenu width={40} height={30} />
                 </a>
             </div>
 
             <div className="desktop-menu">
                 <ApxDesktopLogo />
-                <div onClick={goToIngresar}> <TertiaryButton width={250 + "px"} height={45 + "px"}> Ingresar </TertiaryButton> </div>
+                <div onClick={goToIngresar} style={{ cursor: "pointer" }}> <TertiaryButton width={250 + "px"} height={45 + "px"}> Ingresar </TertiaryButton> </div>
             </div>
         </div>
         }

@@ -47,7 +47,7 @@ export function ApxMobileLogo() {
         Router.push("/");
     }
 
-    return <ApxLogoMobile onClick={goToHome} style={{ borderRadius: 15 }} alt="Apx Logo" />
+    return <ApxLogoMobile onClick={goToHome} style={{ borderRadius: 15, cursor: "pointer" }} alt="Apx Logo" />
 }
 
 export function ApxDesktopLogo() {
@@ -56,7 +56,7 @@ export function ApxDesktopLogo() {
         Router.push("/");
     }
 
-    return <ApxLogoDesktop onClick={goToHome} style={{ borderRadius: 70 }} alt="Apx Logo" />
+    return <ApxLogoDesktop onClick={goToHome} style={{ borderRadius: 70, cursor: "pointer" }} alt="Apx Logo" />
 }
 
 function BurgerMenuImage({ className }) {

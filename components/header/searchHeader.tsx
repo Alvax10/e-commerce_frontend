@@ -73,10 +73,10 @@ export function SearchHeader({ className, queryValue }) {
                 <CloseXMenu className="close-menu" width={30} height={30} />
             </a>
 
-            <div onClick={goToIngresar}> <SubtitleStyle className="options" color="#FEFEFE"> Ingresar </SubtitleStyle> </div>
-            <div onClick={goToPerfil}> <SubtitleStyle className="options" color="#FEFEFE"> Mi perfil </SubtitleStyle> </div>
-            <div onClick={goToBuscar}> <SubtitleStyle className="options" color="#FEFEFE"> Buscar </SubtitleStyle> </div>
-            <div onClick={goToFavs}> <SubtitleStyle className="options" color="#FEFEFE"> Mis favoritos </SubtitleStyle> </div>
+            <div onClick={goToIngresar} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Ingresar </SubtitleStyle> </div>
+            <div onClick={goToPerfil} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Mi perfil </SubtitleStyle> </div>
+            <div onClick={goToBuscar} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Buscar </SubtitleStyle> </div>
+            <div onClick={goToFavs} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Mis favoritos </SubtitleStyle> </div>
 
             <p className="email"> { userDataSaved?.email } </p>
             <BodyStyle onClick={logout} color="#E75A7C"> Cerrar sesión </BodyStyle>
@@ -88,12 +88,12 @@ export function SearchHeader({ className, queryValue }) {
                 <CloseXMenu className="close-menu" width={30} height={30} />
             </a>
 
-            <div onClick={goToIngresar}> <SubtitleStyle className="options" color="#FEFEFE"> Ingresar </SubtitleStyle> </div>
-            <div onClick={goToPerfil}> <SubtitleStyle className="options" color="#FEFEFE"> Mi perfil </SubtitleStyle> </div>
-            <div onClick={goToBuscar}> <SubtitleStyle className="options" color="#FEFEFE"> Buscar </SubtitleStyle> </div>
+            <div onClick={goToIngresar} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Ingresar </SubtitleStyle> </div>
+            <div onClick={goToPerfil} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Mi perfil </SubtitleStyle> </div>
+            <div onClick={goToBuscar} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Buscar </SubtitleStyle> </div>
 
             <p className="email"> { userDataSaved?.email } </p>
-            <BodyStyle onClick={logout} color="#E75A7C"> Cerrar sesión </BodyStyle>
+            <div onClick={logout} style={{ cursor: "pointer" }}> <BodyStyle color="#E75A7C"> Cerrar sesión </BodyStyle> </div>
         </div>
         
         : !toggle && !token ?
@@ -103,9 +103,9 @@ export function SearchHeader({ className, queryValue }) {
                 <div className="mobile-menu">
                     <div className="logo-menu-container">
                         <ApxMobileLogo />
-                        <a href="false" onClick={openMenu}>
+                        <div onClick={openMenu} style={{ cursor: "pointer" }}>
                             <BurgerMenu width={40} height={30} />
-                        </a>
+                        </div>
                     </div>
                     <form className="buscador" onSubmit={handleSearch}>
                         <input style={{ color: "#FEFEFE" }} placeholder="Buscar..." name="search" className="search" />
@@ -119,7 +119,7 @@ export function SearchHeader({ className, queryValue }) {
                         <input placeholder="Buscar..." name="search" className="search" />
                         <SecondaryButton margin={20 + "px" } width={180 + "px"} height={50 + "px"}> Buscar </SecondaryButton>
                     </form>
-                    <div onClick={goToIngresar}> <TertiaryButton margin={10} width={180 + "px"} height={48 + "px"}> Ingresar </TertiaryButton> </div>
+                    <div onClick={goToIngresar} style={{ cursor: "pointer" }}> <TertiaryButton margin={10} width={180 + "px"} height={48 + "px"}> Ingresar </TertiaryButton> </div>
                 </div>
             </div>
         </div>
@@ -131,9 +131,9 @@ export function SearchHeader({ className, queryValue }) {
                 <div className="mobile-menu">
                     <div className="logo-menu-container">
                         <ApxMobileLogo />
-                        <a href="false" onClick={openMenu}>
+                        <div onClick={openMenu} style={{ cursor: "pointer" }}>
                             <BurgerMenu width={40} height={30} />
-                        </a>
+                        </div>
                     </div>
                     <form className="buscador" onSubmit={handleSearch}>
                         <input style={{ color: "#FEFEFE" }} placeholder="Buscar..." name="search" className="search" />
@@ -150,7 +150,7 @@ export function SearchHeader({ className, queryValue }) {
 
                     <div className="contains-session">
                         <p style={{ color: "#FEFEFE" }} className="email-header"> { userDataSaved?.email } </p>
-                        <p onClick={logout} style={{ color: "violet", textDecoration: "underline" }} className="logout"> cerrar sesión </p>
+                        <p onClick={logout} style={{ color: "violet", textDecoration: "underline", cursor: "pointer" }} className="logout"> cerrar sesión </p>
                     </div>
                 </div>
             </div>

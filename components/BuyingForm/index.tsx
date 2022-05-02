@@ -39,7 +39,7 @@ export function BuyingForm() {
         
         const order = await createBuyingOrder(getProductData.id, additionalInfo);
         await Router.push(order?.url);
-        setGetProductData((null as any));
+        await setGetProductData((null as any));
     }
 
     return <FormStyle onSubmit={handleSubmit(submitHandler)}>

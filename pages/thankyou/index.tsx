@@ -18,7 +18,7 @@ const ThanksComp = styled.div`
 
     @media(max-width: 650px) {
 
-        div {
+        div.subtitle-container {
             margin: 0 40px;
         }
     }
@@ -30,7 +30,7 @@ const ThanksPage: NextPage = () => {
     return <MainLayout>
         <ThanksComp>
             <TitleStyle> Muchas gracias por tu compra! 🥺 </TitleStyle>
-            <div> <SubtitleStyle> Esperamos que disfrutes mucho tu producto! </SubtitleStyle> </div>
+            <div className='subtitle-container'> <SubtitleStyle> Esperamos que disfrutes mucho tu producto! </SubtitleStyle> </div>
             <ApxMobileLogo />
         </ThanksComp>
     </MainLayout>

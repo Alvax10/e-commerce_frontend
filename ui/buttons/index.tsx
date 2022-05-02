@@ -6,6 +6,7 @@ function Button({ children, className }) {
 
 export const PrimaryButton = styled(Button)`
     border: none;
+    cursor: pointer;
     border-radius: 8px;
     background-color: #4F7CAC ; 
     width: ${ (props) => props?.width };
