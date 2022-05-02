@@ -3,8 +3,12 @@ import { UserDataComponent } from "./index";
 
 export const UserDataComp = styled(UserDataComponent)`
 
+    display: flex;
     padding: 20px 5px;
-
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    
     .user-form {
         display: flex;
         align-items: center;

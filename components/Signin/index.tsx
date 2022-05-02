@@ -24,7 +24,6 @@ export function SignInComponent({ className }) {
 
     useEffect(() => {
         if (loginData.username != "" && loginData.age != 0 || "0" && loginData.username != "") {
-            console.log(loginData);
             sendCode(loginData);
         }
     }, [loginData]);

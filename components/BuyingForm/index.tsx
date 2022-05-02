@@ -1,15 +1,15 @@
+import Router from "next/router";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-// import { useGetProduct } from "lib/hooks";
+import { useGetProduct } from "lib/hooks";
 import { createBuyingOrder } from "lib/api";
 import { SecondaryButton } from "ui/buttons";
-import { TextField } from "ui/textField/index";
 import { SubtitleStyle } from "ui/typhography";
 
 const FormStyle = styled.form`
 
     display: flex;
-    min-height: 400px;
+    min-height: 600px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -32,16 +32,14 @@ const FormStyle = styled.form`
 `;
 
 export function BuyingForm() {
-    // const [ getProductData, setGetProductData ] = useGetProduct();
+    const [ getProductData, setGetProductData ] = useGetProduct();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    function submitHandler(additionalInfo) {
-        console.log("datita del form: ", additionalInfo);
-        // console.log(getProductData);
-        // const order = createBuyingOrder(getProductData.id, data).then(() => {
-        //     setGetProductData((null as any));
-        // });
-        // console.log("Orden creada", order);
+    async function submitHandler(additionalInfo) {
+        
+        const order = await createBuyingOrder(getProductData.id, additionalInfo);
+        await Router.push(order?.url);
+        setGetProductData((null as any));
     }
 
     return <FormStyle onSubmit={handleSubmit(submitHandler)}>

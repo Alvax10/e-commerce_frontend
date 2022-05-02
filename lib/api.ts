@@ -1,5 +1,5 @@
-// const API_BASE_URL = "https://dwf-m9-final.vercel.app/api";
-const API_BASE_URL = "http://localhost:3000/api";
+const API_BASE_URL = "https://dwf-m9-final.vercel.app/api";
+// const API_BASE_URL = "http://localhost:3000/api";
 
 export async function fetchAPI(api: RequestInfo, options: RequestInit) {
 
@@ -10,12 +10,11 @@ export async function fetchAPI(api: RequestInfo, options: RequestInit) {
 
     if (token) {
         newOptions.headers ||= {}; 
-        newOptions.headers.authorization = "Bearer " + token;
-        newOptions.headers["content-type"] = "application/json";
+        newOptions.headers.Authorization = "Bearer " + token;
+        newOptions.headers["Content-type"] = "application/json";
     }
     
     try {
-        console.log({"ESTA ES LA URL": url}, {"ESTAS SON LAS OPTIONS": newOptions });
         const res = await fetch(url, newOptions);
 
         if (res.status >= 200 && res.status < 300) {
@@ -34,12 +33,89 @@ export async function fetchAPI(api: RequestInfo, options: RequestInit) {
     }
 }
 
+export async function updateUserData(userData) {
+    console.log("USERDATA FROM FUNCTION updateUserData: ", userData);
+    const age = parseInt(userData?.age)
+
+    const dataUpdated = await fetchAPI("/me", {
+        method: 'PATCH',
+        mode: 'cors',
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+            email: userData?.email,
+            age,
+            username: userData?.username,
+        }),
+
+    }).catch((err) => {
+        console.error("ERROR DE UPDATE USER DATA: ", err);
+    });
+
+    alert("Datos modificados! :D");
+    return dataUpdated;
+}
+
+export async function updateCertainUserData(certainUserData) {
+    console.log("USERDATA FROM FUNCTION certainUserData: ", certainUserData);
+
+    if (certainUserData?.email) {
+        
+        const certainDataUpdated = await fetchAPI(`/me/email?value=${certainUserData?.email}`, {
+            method: 'PATCH',
+            mode: 'cors',
+            headers: {
+                "Content-type": "application/json",
+            },
+        }).catch((err) => {
+            console.error("ERROR DE UPDATE USER DATA: ", err);
+        });
+
+        alert("Dato modificado! :D");
+        return certainDataUpdated;
+    }
+
+    if (certainUserData?.age) {
+        
+        const certainDataUpdated = await fetchAPI(`/me/age?value=${parseInt(certainUserData?.age)}`, {
+            method: 'PATCH',
+            mode: 'cors',
+            headers: {
+                "Content-type": "application/json",
+            },
+        }).catch((err) => {
+            console.error("ERROR DE UPDATE USER DATA: ", err);
+        });
+
+        return certainDataUpdated;
+    }
+
+    if (certainUserData?.username) {
+        
+        const certainDataUpdated = await fetchAPI(`/me/username?value=${certainUserData?.username}`, {
+            method: 'PATCH',
+            mode: 'cors',
+            headers: {
+                "Content-type": "application/json",
+            },
+        }).catch((err) => {
+            console.error("ERROR DE UPDATE USER DATA: ", err);
+        });
+
+        return certainDataUpdated;
+    }
+}
+
+
 export async function sendCode(loginData) {
-    console.log(loginData);
 
     const codeSended = await fetchAPI("/auth", {
         method: "POST",
         mode: 'cors',
+        headers: {
+            "Content-type": "application/json",
+        },
         body: JSON.stringify(loginData),
     }).catch((err) => {
         console.log("ESTE ES EL ERROR: ", err);
@@ -64,10 +140,15 @@ export async function getProductsByQuery(search: string, limit: number, offset: 
 
 export async function addProductToCart(productId: string) {
 
-    const data = await fetchAPI(`/user/cart?productId=${productId}`, {
-        method: "POST",
-    });
-    return data;
+    try {
+        const data = await fetchAPI(`/user/cart?productId=${productId}`, {
+            method: "POST",
+        });
+        return data;
+
+    } catch (err) {
+        return "Falló añadir el producto al carrito: " && err;
+    }
 }
 
 export async function removeProductFromCart(productId: string) {
@@ -79,23 +160,27 @@ export async function removeProductFromCart(productId: string) {
 }
 
 export async function createBuyingOrder(productId: string, additionalInfo) {
-    const token = getSavedToken();
 
-    return fetchAPI(`/order?productId=${productId}`, {
-        method: "POST",
-        mode: 'cors',
-        headers: {
-            "Content-type": "application/json",
-            "Authorization": "Bearer" + token,
-        },
-        body: JSON.stringify(additionalInfo),
-    });
+    try {
+        const order = await fetchAPI(`/order?productId=${productId}`, {
+            method: "POST",
+            mode: 'cors',
+            body: JSON.stringify(additionalInfo),
+        });
+        return order;
+
+    } catch (err) {
+        return "Este es el error de order: " && err;
+    }
 }
 
 export async function getToken(email: string, code: string) {
     const data = await fetchAPI("/auth/token", {
         mode: 'cors',
         method: "POST",
+        headers: {
+            "Content-type": "application/json",
+        },
         body: JSON.stringify({
             email,
             code: parseInt(code),

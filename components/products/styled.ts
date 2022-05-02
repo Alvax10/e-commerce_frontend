@@ -2,7 +2,7 @@ import { Products } from "./products";
 import styled from "styled-components";
 
 export const ProductsComp = styled(Products)`
-    min-height: 400px;
+    min-height: 600px;
 
     @media(max-width: 500px) {
 

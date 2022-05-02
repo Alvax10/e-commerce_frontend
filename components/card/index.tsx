@@ -2,7 +2,7 @@ import Router from "next/router";
 import styled from "styled-components";
 import { BodyStyle } from "ui/typhography/index";
 import { HeartIcon, TrashCanIcon } from "ui/icons";
-import { removeProductFromCart, addProductToCart } from "lib/api";
+import { removeProductFromCart, addProductToCart, getSavedToken } from "lib/api";
 import { useGetProduct } from "lib/hooks";
 
 type CardType = {
@@ -42,20 +42,26 @@ const ImgStyle = styled.img`
 
 function ProductCardUI({ className, productName, src, price, id, description }: CardType) {
     const [ sendProductData, setSendProductData ] = useGetProduct();
+    const token = getSavedToken();
 
     function goToProduct(e) {
         e.preventDefault();
-        
         setSendProductData({ productName, price, src, id, description});
         Router.push("/products/" + id);
     }
 
-    function addProductToFavs(e) {
+    async function addProductToFavs(e) {
         e.preventDefault();
         console.log(id);
-        addProductToCart(id).then(() => {
-            alert("Producto añadido! 😎");
-        });
+
+        if (token) {
+            
+            await addProductToCart(id);
+            await alert("Producto añadido! 😎");
+
+        } else {
+            alert("Necesitas estar logueado para añadir productos a favoritos");
+        }
     }
 
     return <DivContainer>
@@ -69,7 +75,14 @@ function ProductCardUI({ className, productName, src, price, id, description }: 
     </DivContainer>
 }
 
-function MyProductsCardUI({ className, productName, src, price, id }: CardType) {
+function MyProductsCardUI({ className, productName, src, price, id, description }: CardType) {
+    const [ sendProductData, setSendProductData ] = useGetProduct();
+
+    function goToProduct(e) {
+        e.preventDefault();
+        setSendProductData({ productName, price, src, id, description});
+        Router.push("/products/" + id);
+    }
 
     function removeProductFromFavs(e) {
         e.preventDefault();
@@ -80,7 +93,7 @@ function MyProductsCardUI({ className, productName, src, price, id }: CardType) 
     }
 
     return <DivContainer>
-        <ImgStyle alt="Product Image" src={src} />
+        <ImgStyle alt="Product Image" src={src} onClick={goToProduct} />
 
         <div className={className}>
             <BodyStyle className="product-name"> { productName } </BodyStyle>

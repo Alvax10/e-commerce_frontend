@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Router from "next/router";
 import { useMe } from "lib/hooks";
 import { getSavedToken } from "lib/api";
@@ -21,7 +20,7 @@ export function Header({ className }) {
             userData ? setUserDataSaved(userData) : null;
         }
         
-    }, []);
+    }, [userData]);
 
     function openMenu(e) {
         e.preventDefault();

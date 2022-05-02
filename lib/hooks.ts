@@ -9,8 +9,11 @@ const { persistAtom } = recoilPersist();
 export function useMe() {
 
     const { data, error } = useSWR("/me", fetchAPI);
-    const response = data ? data?.data : null;
-    return response;
+    
+    if (data?.data) {
+        const response = data?.data;
+        return response;
+    }
 }
 
 export function useProduct(productId: string) {
