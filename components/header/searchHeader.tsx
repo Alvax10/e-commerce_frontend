@@ -116,7 +116,7 @@ export function SearchHeader({ className, queryValue }) {
                 <div className="desktop-menu">
                     <ApxDesktopLogo />
                     <form className="buscador-desktop" onSubmit={handleSearch}>
-                        <input placeholder="Buscar..." name="search" className="search" />
+                        <input style={{ color: "#FEFEFE" }} placeholder="Buscar..." name="search" className="search" />
                         <SecondaryButton margin={20 + "px" } width={180 + "px"} height={50 + "px"}> Buscar </SecondaryButton>
                     </form>
                     <div onClick={goToIngresar} style={{ cursor: "pointer" }}> <TertiaryButton margin={10} width={180 + "px"} height={48 + "px"}> Ingresar </TertiaryButton> </div>

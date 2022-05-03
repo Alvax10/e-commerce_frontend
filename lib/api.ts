@@ -1,5 +1,4 @@
 const API_BASE_URL = "https://dwf-m9-final.vercel.app/api";
-// const API_BASE_URL = "http://localhost:3000/api";
 
 export async function fetchAPI(api: RequestInfo, options: RequestInit) {
 
@@ -160,13 +159,25 @@ export async function removeProductFromCart(productId: string) {
 }
 
 export async function createBuyingOrder(productId: string, additionalInfo) {
+    const token = getSavedToken();
 
     try {
-        const order = await fetchAPI(`/order?productId=${productId}`, {
+
+        console.log(productId);
+        const res = await fetch(API_BASE_URL + "/order?productId=" + productId.toString(), {
             method: "POST",
             mode: 'cors',
-            body: JSON.stringify(additionalInfo),
+            headers: {
+                "Authorization": "Bearer " + token,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                shipping_address: additionalInfo?.address,
+                additionalInfo: additionalInfo?.additionalInfo
+            }),
+
         });
+        const order = await res.json();
         return order;
 
     } catch (err) {

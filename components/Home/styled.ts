@@ -13,6 +13,7 @@ export const HomeComp = styled(HomeComponent)`
         display: flex;
         padding: 10px;
         min-height: 300px;
+        align-items: center;
         flex-direction: column;
         background-color: #91E5F6;
     }

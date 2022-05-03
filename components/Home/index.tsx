@@ -1,21 +1,19 @@
-import BFFPage from "pages/bff";
-import { useState } from "react";
 import Router from "next/router";
-import { ProductCard } from "components/card";
+import { useState } from "react";
 import { HeartIcon } from "ui/icons/index";
+import { ProductCard } from "components/card";
 import { PrimaryButton } from "ui/buttons/index";
 import { BodyStyle, SubtitleStyle, TitleStyle } from "ui/typhography/index";
 
 export function HomeComponent({ className }) {
+    const [ productosDestacados, setProductosDestacados ] = useState((null as any));
 
-    const productosDestacados = BFFPage();
     function handleSearch(e) {
         e.preventDefault();
         Router.push("/products");
     }
 
     return <div className={className}>
-
         {   productosDestacados ? 
 
             <div>
@@ -30,6 +28,7 @@ export function HomeComponent({ className }) {
                     <div className="product-container">
 
                         { productosDestacados?.map((product) => {
+                            console.log(product);
                             return <ProductCard id={product.objectID} description={product.Description} key={product.objectID} icon={HeartIcon} src={product.Images[0].url} productName={product.Name} price={product["Unit cost"]} />
                         })}
                     </div>

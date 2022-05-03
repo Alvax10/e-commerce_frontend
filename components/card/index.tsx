@@ -86,7 +86,6 @@ function MyProductsCardUI({ className, productName, src, price, id, description 
 
     function removeProductFromFavs(e) {
         e.preventDefault();
-        console.log(id);
         removeProductFromCart(id).then(() => {
             alert("Producto removido! 😞");
         })

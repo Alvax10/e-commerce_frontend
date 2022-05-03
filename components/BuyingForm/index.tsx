@@ -1,4 +1,5 @@
 import Router from "next/router";
+import { useEffect } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useGetProduct } from "lib/hooks";
@@ -9,10 +10,13 @@ import { SubtitleStyle } from "ui/typhography";
 const FormStyle = styled.form`
 
     display: flex;
-    min-height: 600px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+
+    @media(min-height: 530px) {
+        min-height: 680px;
+    }
 
     .input-address {
         padding: 7px;
@@ -37,10 +41,19 @@ export function BuyingForm() {
 
     async function submitHandler(additionalInfo) {
         
+        console.log("El id del producto: ", getProductData.id);
         const order = await createBuyingOrder(getProductData.id, additionalInfo);
-        await Router.push(order?.url);
-        await setGetProductData((null as any));
+        console.log(order);
+        Router.push(order?.url);
+        setGetProductData((null as any));
     }
+
+    useEffect(() => {
+        if (!getProductData) {
+            Router.push("/");
+        }
+
+    }, []);
 
     return <FormStyle onSubmit={handleSubmit(submitHandler)}>
         <SubtitleStyle> Dejanos información adicional : </SubtitleStyle>
