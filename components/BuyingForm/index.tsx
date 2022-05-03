@@ -44,7 +44,7 @@ export function BuyingForm() {
         console.log("El id del producto: ", getProductData.id);
         const order = await createBuyingOrder(getProductData.id, additionalInfo);
         console.log(order);
-        Router.push(order?.url);
+        window.open(order?.url);
         setGetProductData((null as any));
     }
 

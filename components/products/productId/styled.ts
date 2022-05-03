@@ -42,7 +42,7 @@ export const ProductIdComp = styled(ProductIdComponent)`
         }
 
         .price {
-            margin-top: 60px;
+            margin-top: 75px;
             margin-left: 80px;
             grid-row-start: 1;
             grid-column-start: 2;
