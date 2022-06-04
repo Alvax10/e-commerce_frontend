@@ -18,10 +18,8 @@ export function ProductIdComponent({ className }) {
     }
 
     useEffect(() => {
-
-        console.log("EN EL USEEFFECT");
+        // console.log("EN EL USEEFFECT");
         localStorage.removeItem("recoil-persist");
-
     },[]);
 
     return getProductData ? <div className={className}>

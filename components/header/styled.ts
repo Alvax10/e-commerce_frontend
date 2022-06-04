@@ -28,7 +28,6 @@ export const MainHeader = styled(Header)`
         top: 15px;
         right: 15px;
         position: fixed;
-        border: solid 2px #fefefe;
     }
 
     @media(max-width: 600px) {
@@ -136,7 +135,6 @@ export const SearchProductsHeader = styled(SearchHeader)`
             top: 15px;
             right: 15px;
             position: fixed;
-            border: solid 2px #fefefe;
         }
     }
 

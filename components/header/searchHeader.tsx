@@ -85,7 +85,7 @@ export function SearchHeader({ className, queryValue }) {
         : toggle && !token ? <div className="menu-mobile">
 
             <a href="false" onClick={closeMenu}>
-                <CloseXMenu className="close-menu" width={30} height={30} />
+                <CloseXMenu className="close-menu" />
             </a>
 
             <div onClick={goToIngresar} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Ingresar </SubtitleStyle> </div>

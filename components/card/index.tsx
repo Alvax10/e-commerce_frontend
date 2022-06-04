@@ -6,37 +6,50 @@ import { removeProductFromCart, addProductToCart, getSavedToken } from "lib/api"
 import { useGetProduct } from "lib/hooks";
 
 type CardType = {
+    id: string,
     src: string,
     price: number,
     className: string,
     productName: string,
-    id: string,
     description: string,
 }
 
 const DivContainer = styled.div`
 
-    max-width: 380px;
+    width: 230px;
     margin-bottom: 35px;
     border-radius: 10px;
     border: solid 2px #000;
 
     @media(min-width: 450px) {
         display: flex;
-        max-width: 400px;
+        width: 300px;
+        align-self: center;
+        flex-direction: column;
+    }
+
+    @media(max-width: 650px) {
+        display: flex;
+        width: 255px;
         align-self: center;
         flex-direction: column;
     }
 `;
 
 const ImgStyle = styled.img`
-    max-width: 380px;
-    max-height: 380px;
+    /* width: 380px; */
+    height: 200px;
     align-self: center;
     border-radius: 10px;
 
     @media(max-width: 650px) {
-        max-width: 225px;
+        width: 250px;
+        height: 200px;
+    }
+
+    @media(min-width: 650px) {
+        width: 296px;
+        height: 250px;
     }
 `;
 
@@ -116,7 +129,8 @@ export const ProductCard = styled(ProductCardUI)`
 
     .product-price {
         margin-top: 5px;
-        padding-left: 10px;
+        margin-right: 20px;
+        padding-left: 20px;
         grid-column-start: 1;
     }
 
@@ -134,14 +148,14 @@ export const ProductCard = styled(ProductCardUI)`
         .product-name {
             max-width: 150px;
             font-size: 20px;
-            padding-left: 10px;
+            padding-left: 30px;
             grid-column-start: 1;
         }
 
         .product-price {
             font-size: 20px;
             margin-top: 5px;
-            padding-left: 10px;
+            margin-right: 50px;
             grid-column-start: 1;
         }
 
@@ -168,7 +182,7 @@ export const MyProductsCard = styled(MyProductsCardUI)`
 
     .product-price {
         margin-top: 5px;
-        padding-left: 10px;
+        margin-left: 20px;
         grid-column-start: 1;
     }
 
@@ -193,7 +207,7 @@ export const MyProductsCard = styled(MyProductsCardUI)`
         .product-price {
             font-size: 20px;
             margin-top: 5px;
-            padding-left: 10px;
+            margin-left: 50px;
             grid-column-start: 1;
         }
 

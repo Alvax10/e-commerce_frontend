@@ -1,11 +1,10 @@
-import Image from "next/image";
 import TrashCanSVG from "./trash.svg";
 import styled from "styled-components";
-import XPNG from "ui/icons/Vector.png";
 import UserSvg from "ui/icons/user.svg";
 import HomeSvg from "ui/icons/home.svg";
 import BurgerMenuSVG from "./burger.svg";
 import HeartSvg from "ui/icons/heart.svg";
+import CROSS from "ui/icons/white-cross.svg";
 import ApxLogoMobile from "./logo-mobile.svg";
 import ApxLogoDesktop from "./logo-desktop.svg";
 import Router from "next/router";
@@ -69,7 +68,7 @@ export const BurgerMenu = styled(BurgerMenuImage)`
 `;
 
 function CloseXMenuImage({ className }) {
-    return <Image alt="X Vector" src={XPNG} layout="raw" className={className} />
+    return <CROSS className={className} />
 }
 
 export const CloseXMenu = styled(CloseXMenuImage)`

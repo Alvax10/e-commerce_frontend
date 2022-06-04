@@ -88,6 +88,14 @@ export function SearchComponent({ query }) {
     
     }, [nextPage, queryValue]);
 
+    function previousPage(e) {
+        e.preventDefault();
+        setNextPage(0);
+        setTimeout(() => {
+            Router.push("/products#top");
+        }, 500);
+    }
+
     function nextProductsPage(e) {
         e.preventDefault();
         let times = 1;
@@ -110,6 +118,8 @@ export function SearchComponent({ query }) {
                         return <ProductCard id={product.objectID} description={product.Description} key={product.objectID} src={product.Images[0].url} productName={product.Name} price={product["unit_price"]} />
                     })}
                 </div>
+
+                <a href="false" onClick={previousPage} style={{ color: "violet", fontSize: 30, alignSelf: "center", textDecoration: "underline", margin: 20 }}> Ver menos ↩ </a>
             </div>
 
         : productsByQuery?.length > 0 ?

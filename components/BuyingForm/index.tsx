@@ -45,8 +45,7 @@ export function BuyingForm() {
         const order = await createBuyingOrder(getProductData.id, additionalInfo);
         console.log(order);
         window.open(order?.url);
-        await setGetProductData((null as any));
-        await window.close();
+        setGetProductData((null as any));
     }
 
     useEffect(() => {

@@ -80,7 +80,7 @@ export function Header({ className }) {
 
         <div className="menu-mobile">
             <div onClick={closeMenu} style={{ cursor: "pointer" }}>
-                <CloseXMenu className="close-menu" width={30} height={30} />
+                <CloseXMenu className="close-menu" />
             </div>
 
             <div onClick={goToIngresar} style={{ cursor: "pointer" }}> <SubtitleStyle className="options" color="#FEFEFE"> Ingresar </SubtitleStyle> </div>
