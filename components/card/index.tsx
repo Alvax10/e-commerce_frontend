@@ -1,9 +1,10 @@
+import swal from 'sweetalert';
 import Router from "next/router";
 import styled from "styled-components";
+import { useGetProduct } from "lib/hooks";
 import { BodyStyle } from "ui/typhography/index";
 import { HeartIcon, TrashCanIcon } from "ui/icons";
 import { removeProductFromCart, addProductToCart, getSavedToken } from "lib/api";
-import { useGetProduct } from "lib/hooks";
 
 type CardType = {
     id: string,
@@ -65,15 +66,22 @@ function ProductCardUI({ className, productName, src, price, id, description }: 
 
     async function addProductToFavs(e) {
         e.preventDefault();
-        console.log(id);
+        // console.log(id);
 
         if (token) {
             
             await addProductToCart(id);
-            await alert("Producto añadido! 😎");
+            await swal({
+                title: "Listo!",
+                text: "Producto añadido! 😎",
+                icon: "success",
+            });
 
         } else {
-            alert("Necesitas estar logueado para añadir productos a favoritos");
+            swal({
+                title: "Necesitas estar logueado para añadir productos a favoritos",
+                icon: "error"
+            });
         }
     }
 
@@ -100,8 +108,12 @@ function MyProductsCardUI({ className, productName, src, price, id, description 
     function removeProductFromFavs(e) {
         e.preventDefault();
         removeProductFromCart(id).then(() => {
-            alert("Producto removido! 😞");
-        })
+            swal({
+                title: "Hecho",
+                text: "Producto removido 😞",
+                icon: "success",
+            }
+        )})
     }
 
     return <DivContainer>

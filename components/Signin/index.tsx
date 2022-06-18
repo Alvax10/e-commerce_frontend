@@ -1,3 +1,4 @@
+import swal from 'sweetalert';
 import router from "next/router";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
@@ -25,6 +26,11 @@ export function SignInComponent({ className }) {
     useEffect(() => {
         if (loginData.username != "" && loginData.age != 0 || "0" && loginData.username != "") {
             sendCode(loginData);
+            swal({
+                title: "Atento!",
+                text: "Se ha enviado un código a tu email",
+                icon: "success",
+            });
         }
     }, [loginData]);
     

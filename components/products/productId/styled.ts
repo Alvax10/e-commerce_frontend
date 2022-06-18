@@ -42,9 +42,9 @@ export const ProductIdComp = styled(ProductIdComponent)`
         }
 
         .price {
-            margin-top: 75px;
-            margin-left: 80px;
+            margin-top: 60px;
             grid-row-start: 1;
+            justify-self: center;
             grid-column-start: 2;
             align-self: flex-start;
         }

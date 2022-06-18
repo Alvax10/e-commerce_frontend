@@ -52,7 +52,6 @@ export async function updateUserData(userData) {
         console.error("ERROR DE UPDATE USER DATA: ", err);
     });
 
-    alert("Datos modificados! :D");
     return dataUpdated;
 }
 
@@ -71,7 +70,6 @@ export async function updateCertainUserData(certainUserData) {
             console.error("ERROR DE UPDATE USER DATA: ", err);
         });
 
-        alert("Dato modificado! :D");
         return certainDataUpdated;
     }
 

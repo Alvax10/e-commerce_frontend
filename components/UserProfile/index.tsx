@@ -1,12 +1,13 @@
-import { updateUserData, updateCertainUserData } from "lib/api";
+import swal from 'sweetalert';
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { SubtitleStyle, TitleStyle } from "ui/typhography/index";
+import { TitleStyle } from "ui/typhography/index";
 import { SecondaryButton } from "ui/buttons/index";
+import { updateUserData, updateCertainUserData } from "lib/api";
 
 export function UserDataComponent({ className }) {
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const [userData, setUserData] = useState({
         email: '',
         age: 0,
@@ -14,20 +15,33 @@ export function UserDataComponent({ className }) {
     });
     
     async function handleUserDataForm (loginData) {
-        console.log(loginData);
         await setUserData(loginData);
-        loginData = ""
+        loginData.age = "";
+        loginData.email = "";
+        loginData.username = "";
     }
 
     useEffect(() => {
 
         if ( userData?.email != '' && userData?.age != 0 || null && userData?.username != '') {
-            console.log(userData);
-            updateUserData(userData);
+            // console.log(userData);
+            updateUserData(userData).then(() => {
+                swal({
+                    title: "Genial!",
+                    text: "Tus datos fueron actualizados!",
+                    icon: "success",
+                });
+            })
 
         } else {
-            console.log(userData);
-            updateCertainUserData(userData);
+            // console.log(userData);
+            updateCertainUserData(userData).then(() => {
+                swal({
+                    title: "Genial!",
+                    text: "Tu dato fue actualizado!",
+                    icon: "success",
+                });
+            })
         }
     }, [userData]);
     
@@ -36,7 +50,7 @@ export function UserDataComponent({ className }) {
     
         <form onSubmit={handleSubmit(handleUserDataForm)} className="user-form">
             <TitleStyle> Perfil </TitleStyle>
-            <SubtitleStyle> Solo puedes actualizar un dato a la vez, o todos juntos 😞 </SubtitleStyle>
+            <h4 style={{ display: "flex", flexDirection: "column", alignItems: "center" }}> Solo puedes actualizar un dato a la vez, o todos juntos 😞 </h4>
 
             <label className="label">
                 <div> Nombre de usuario </div>

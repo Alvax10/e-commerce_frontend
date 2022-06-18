@@ -59,11 +59,11 @@ export function Footer({ className }) {
 
                 <div className="redes">
                     <SubtitleStyle color="#FEFEFE"> Redes </SubtitleStyle>
-                    <a href="https://apx.school" style={{ color: "white", textDecoration: "none"}}>
+                    <a href="https://apx.school" style={{ color: "white", textDecoration: "none" }}>
                         <UserIcon color="white" width={20} height={20} />
-                        Twitter 
+                        apx.school 
                     </a>
-                    <a href="https://apx.school" style={{ color: "white", textDecoration: "none"}}>
+                    <a href="https://twitter.com" style={{ color: "white", textDecoration: "none" }}>
                         <UserIcon color="white" width={20} height={20} />
                         Twitter
                     </a>
@@ -81,19 +81,19 @@ export function Footer({ className }) {
 
                 <div className="container">
                     <div>
-                        <div onClick={goToPerfil}> <BodyStyle color="#FEFEFE"> Mi perfil </BodyStyle> </div>
-                        <div onClick={goToBuscar}> <BodyStyle color="#FEFEFE"> Buscar </BodyStyle> </div>
-                        <div onClick={goToFavs}> <BodyStyle color="#FEFEFE"> Mis favoritos </BodyStyle> </div>
-                        <div onClick={logout}> <BodyStyle color="#FEFEFE"> Logout </BodyStyle> </div>
+                        <div onClick={goToPerfil} style={{ cursor: "pointer" }}> <BodyStyle color="#FEFEFE"> Mi perfil </BodyStyle> </div>
+                        <div onClick={goToBuscar} style={{ cursor: "pointer" }}> <BodyStyle color="#FEFEFE"> Buscar </BodyStyle> </div>
+                        <div onClick={goToFavs} style={{ cursor: "pointer" }}> <BodyStyle color="#FEFEFE"> Mis favoritos </BodyStyle> </div>
+                        <div onClick={logout} style={{ cursor: "pointer" }}> <BodyStyle color="#FEFEFE"> Logout </BodyStyle> </div>
                     </div>
 
                     <div className="redes">
                         <SubtitleStyle color="#FEFEFE"> Redes </SubtitleStyle>
-                        <a href="https://apx.school" style={{ color: "white", textDecoration: "none"}}>
+                        <a href="https://apx.school" style={{ color: "white", textDecoration: "none", cursor: "pointer" }}>
                             <UserIcon color="white" width={20} height={20} />
-                            Twitter
+                            apx.school
                         </a>
-                        <a href="https://apx.school" style={{ color: "white", textDecoration: "none"}}>
+                        <a href="https://twitter.com" style={{ color: "white", textDecoration: "none", cursor: "pointer" }}>
                             <UserIcon color="white" width={20} height={20} />
                             Twitter
                         </a>
@@ -112,18 +112,18 @@ export function Footer({ className }) {
         <div className="general-div">
             <div className="mobile-footer">
                 <div>
-                    <div onClick={goToIngresar}> <BodyStyle  color="#FEFEFE"> Ingresar </BodyStyle> </div>
-                    <div onClick={goToPerfil}> <BodyStyle color="#FEFEFE"> Mi perfil </BodyStyle> </div>
-                    <div onClick={goToBuscar}> <BodyStyle color="#FEFEFE"> Buscar </BodyStyle> </div>
+                    <div onClick={goToIngresar} > <BodyStyle  color="#FEFEFE"> Ingresar </BodyStyle> </div>
+                    <div onClick={goToPerfil} > <BodyStyle color="#FEFEFE"> Mi perfil </BodyStyle> </div>
+                    <div onClick={goToBuscar} > <BodyStyle color="#FEFEFE"> Buscar </BodyStyle> </div>
                 </div>
 
                 <div className="redes">
                     <SubtitleStyle color="#FEFEFE"> Redes </SubtitleStyle>
-                    <a href="https://apx.school" style={{ color: "white", textDecoration: "none"}}>
+                    <a href="https://apx.school" style={{ color: "white", textDecoration: "none" }}>
                         <UserIcon color="white" width={20} height={20} />
-                        Twitter 
+                        apx.school
                     </a>
-                    <a href="https://apx.school" style={{ color: "white", textDecoration: "none"}}>
+                    <a href="https://twitter.com" style={{ color: "white", textDecoration: "none" }}>
                         <UserIcon color="white" width={20} height={20} />
                         Twitter
                     </a>
@@ -141,18 +141,18 @@ export function Footer({ className }) {
 
                 <div className="container">
                     <div>
-                        <div onClick={goToIngresar}> <BodyStyle  color="#FEFEFE"> Ingresar </BodyStyle> </div>
-                        <div onClick={goToPerfil}> <BodyStyle color="#FEFEFE"> Mi perfil </BodyStyle> </div>
-                        <div onClick={goToBuscar}> <BodyStyle color="#FEFEFE"> Buscar </BodyStyle> </div>
+                        <div onClick={goToIngresar} style={{ cursor: "pointer" }}> <BodyStyle  color="#FEFEFE"> Ingresar </BodyStyle> </div>
+                        <div onClick={goToPerfil} style={{ cursor: "pointer" }}> <BodyStyle color="#FEFEFE"> Mi perfil </BodyStyle> </div>
+                        <div onClick={goToBuscar} style={{ cursor: "pointer" }}> <BodyStyle color="#FEFEFE"> Buscar </BodyStyle> </div>
                     </div>
 
                     <div className="redes">
                         <SubtitleStyle color="#FEFEFE"> Redes </SubtitleStyle>
-                        <a href="https://apx.school" style={{ color: "white", textDecoration: "none"}}>
+                        <a href="https://apx.school" style={{ color: "white", textDecoration: "none", cursor: "pointer" }}>
                             <UserIcon color="white" width={20} height={20} />
-                            Twitter
+                            apx.school
                         </a>
-                        <a href="https://apx.school" style={{ color: "white", textDecoration: "none"}}>
+                        <a href="https://twitter.com" style={{ color: "white", textDecoration: "none", cursor: "pointer" }}>
                             <UserIcon color="white" width={20} height={20} />
                             Twitter
                         </a>

@@ -37,14 +37,14 @@ const FormStyle = styled.form`
 
 export function BuyingForm() {
     const [ getProductData, setGetProductData ] = useGetProduct();
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     async function submitHandler(additionalInfo) {
         
-        console.log("El id del producto: ", getProductData.id);
+        // console.log("El id del producto: ", getProductData.id);
         const order = await createBuyingOrder(getProductData.id, additionalInfo);
-        console.log(order);
-        window.open(order?.url);
+        // console.log("ESTA ES LA ORDEN: ", order);
+        window.location.replace(order?.url);
         setGetProductData((null as any));
     }
 
@@ -60,10 +60,10 @@ export function BuyingForm() {
 
         <label style={{ marginTop: 20, marginBottom: 5 }}>
             <div> Dirección de envío </div>
-            <input placeholder="Dirección de envío..." className="input-address" { ...register("address", { required: true })} type="text" />
+            <input placeholder="Dirección de envío..." className="input-address" { ...register("address") } type="text" />
         </label>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            { errors.address && <span style={{ maxWidth: 150, textAlign: "center", color: "red", margin: 1 }}> El campo es requerido! </span> }
+            { errors.address && <span style={{ maxWidth: 150, textAlign: "center", color: "red", margin: 1 }}> Ocurrió un error! 🚩 </span> }
         </div>
 
         <label style={{ marginTop: 20, marginBottom: 20 }}>
@@ -71,7 +71,7 @@ export function BuyingForm() {
             <textarea style={{ marginTop: 10 }} className="more-info" { ...register("additionalInfo") } placeholder="Información adicional?..."></textarea>
         </label>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            { errors.additionalInfo && <span style={{ maxWidth: 150, textAlign: "center", color: "red", margin: 1 }}> Ocurrió un error y no sabemos por qué 🤔 </span> }
+            { errors.additionalInfo && <span style={{ maxWidth: 150, textAlign: "center", color: "red", margin: 1 }}> Ocurrió un error! 🚩 </span> }
         </div>
 
         <SecondaryButton width={250 + "px"} height={40 + "px"} > Enviar </SecondaryButton>

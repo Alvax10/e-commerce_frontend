@@ -25,6 +25,7 @@ export const MainFooter = styled(Footer)`
 
     .redes {
         display: flex;
+        cursor: pointer;
         flex-direction: column;
     }
 

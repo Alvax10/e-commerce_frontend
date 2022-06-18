@@ -30,7 +30,7 @@ export function UserFavComponent({ className }) {
         <div className="product-container">
             <TitleStyle> Tus favoritos! </TitleStyle>
             { cart.map((product) => {
-                console.log(product)
+                // console.log(product);
                 return <MyProductsCard id={product.id} description={product.description} key={product.id} src={product.image[0].url} productName={product.title} price={product["price"]} />
             })}
         </div>
