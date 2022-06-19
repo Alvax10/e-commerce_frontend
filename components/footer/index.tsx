@@ -61,9 +61,9 @@ export function Footer({ className }) {
                     <SubtitleStyle color="#FEFEFE"> Redes </SubtitleStyle>
                     <a href="https://apx.school" style={{ color: "white", textDecoration: "none" }}>
                         <UserIcon color="white" width={20} height={20} />
-                        apx.school 
+                            APX 
                     </a>
-                    <a href="https://twitter.com" style={{ color: "white", textDecoration: "none" }}>
+                    <a href="https://twitter.com/apxschool" style={{ color: "white", textDecoration: "none" }}>
                         <UserIcon color="white" width={20} height={20} />
                         Twitter
                     </a>
@@ -91,9 +91,9 @@ export function Footer({ className }) {
                         <SubtitleStyle color="#FEFEFE"> Redes </SubtitleStyle>
                         <a href="https://apx.school" style={{ color: "white", textDecoration: "none", cursor: "pointer" }}>
                             <UserIcon color="white" width={20} height={20} />
-                            apx.school
+                                APX
                         </a>
-                        <a href="https://twitter.com" style={{ color: "white", textDecoration: "none", cursor: "pointer" }}>
+                        <a href="https://twitter.com/apxschool" style={{ color: "white", textDecoration: "none", cursor: "pointer" }}>
                             <UserIcon color="white" width={20} height={20} />
                             Twitter
                         </a>
@@ -121,9 +121,9 @@ export function Footer({ className }) {
                     <SubtitleStyle color="#FEFEFE"> Redes </SubtitleStyle>
                     <a href="https://apx.school" style={{ color: "white", textDecoration: "none" }}>
                         <UserIcon color="white" width={20} height={20} />
-                        apx.school
+                            APX
                     </a>
-                    <a href="https://twitter.com" style={{ color: "white", textDecoration: "none" }}>
+                    <a href="https://twitter.com/apxschool" style={{ color: "white", textDecoration: "none" }}>
                         <UserIcon color="white" width={20} height={20} />
                         Twitter
                     </a>
@@ -150,9 +150,9 @@ export function Footer({ className }) {
                         <SubtitleStyle color="#FEFEFE"> Redes </SubtitleStyle>
                         <a href="https://apx.school" style={{ color: "white", textDecoration: "none", cursor: "pointer" }}>
                             <UserIcon color="white" width={20} height={20} />
-                            apx.school
+                                APX
                         </a>
-                        <a href="https://twitter.com" style={{ color: "white", textDecoration: "none", cursor: "pointer" }}>
+                        <a href="https://twitter.com/apxschool" style={{ color: "white", textDecoration: "none", cursor: "pointer" }}>
                             <UserIcon color="white" width={20} height={20} />
                             Twitter
                         </a>
