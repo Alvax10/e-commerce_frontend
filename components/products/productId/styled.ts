@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ProductIdComponent } from "./index";
+import { ProductIdComponent } from "./prodcuctId";
 
 export const ProductIdComp = styled(ProductIdComponent)`
 

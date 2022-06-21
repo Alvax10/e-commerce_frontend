@@ -1,23 +1,42 @@
 import styled from "styled-components";
 
 function Button({ children, className }) {
-    return <button className={className}> { children } </button>
+	return <button className={className}> {children} </button>;
 }
 
 export const PrimaryButton = styled(Button)`
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    background-color: #4F7CAC ; 
-    width: ${ (props) => props?.width };
-    height: ${ (props) => props?.height };
-    margin: ${ (props) => props?.margin };
+	width: 250px;
+	height: 50px;
+	margin: 5px;
+	border: none;
+	cursor: pointer;
+	border-radius: 8px;
+	background-color: #4f7cac;
 `;
 
 export const SecondaryButton = styled(PrimaryButton)`
-    background-color: #FFC700;
-`
+	margin: 10px;
+	background-color: #ffc700;
+`;
 
 export const TertiaryButton = styled(PrimaryButton)`
-    background-color: #E75A7C;
+	margin: 5px;
+	height: 45px;
+	background-color: #e75a7c;
+`;
+
+export const MyPrimaryButton = styled(PrimaryButton)`
+	margin: 15px;
+`;
+
+export const MySecondaryButton = styled(SecondaryButton)`
+	width: 80%;
+	margin: 10px;
+	height: 30px;
+`;
+
+export const MyTertiaryButton = styled(TertiaryButton)`
+	width: 180px;
+	margin: 10px;
+	height: 48px;
 `;

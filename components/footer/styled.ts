@@ -1,4 +1,4 @@
-import { Footer } from "./index"
+import { Footer } from "./index";
 import styled from "styled-components";
 
 export const MainFooter = styled(Footer)`

@@ -1,6 +1,6 @@
-import { Header } from "./index"
-import { SearchHeader } from "./searchHeader"
+import { Header } from "./index";
 import styled from "styled-components";
+import { SearchHeader } from "./searchHeader";
 
 export const MainHeader = styled(Header)`
     
