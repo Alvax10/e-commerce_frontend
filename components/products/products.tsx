@@ -3,7 +3,7 @@ import { useProducts } from "lib/hooks";
 import { useEffect, useState } from "react";
 import { getProductsByQuery } from "lib/api";
 import { ProductCard } from "components/card";
-import { SubtitleStyle } from "ui/typhography/index";
+import { SubtitleStyle, BodyStyle } from "ui/typhography/index";
 
 export function Products({ className, query }) {
 	const data = useProducts();
@@ -83,7 +83,7 @@ export function Products({ className, query }) {
 
 	return (
 		<div className={className} id='top'>
-			{productsByQuery && productsLength == paginationFromQuery?.total ? (
+			{productsByQuery && productsLength == paginationFromQuery?.total && productsByQuery?.length != 0 ? (
 				<div
 					style={{
 						display: "flex",
@@ -125,7 +125,7 @@ export function Products({ className, query }) {
 					</a>
 				</div>
 			) : productsByQuery &&
-			  productsLength <= paginationFromQuery?.total ? (
+			productsLength <= paginationFromQuery?.total && productsByQuery?.length != 0 ? (
 				<div
 					style={{
 						display: "flex",
@@ -166,7 +166,29 @@ export function Products({ className, query }) {
 						Ver más ↪{" "}
 					</a>
 				</div>
-			) : (
+			)
+			
+			: productsByQuery?.length == 0 ? (
+
+				<div
+					style={{
+						height: 600,
+						display: "flex",
+						alignItems: "center",
+						flexDirection: "column",
+						justifyContent: "center",
+					}}>
+						<SubtitleStyle alignSelf='center'>
+							{productsLength} resultados de:{" "}
+							{paginationFromQuery?.total}{" "}
+						</SubtitleStyle>
+
+						<BodyStyle> No hay productos relacionados a tu búsqueda 😞 </BodyStyle>
+				</div>
+			)
+
+			: 
+			(
 				<div className='container'>
 					<SubtitleStyle>
 						{" "}

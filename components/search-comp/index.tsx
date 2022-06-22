@@ -107,7 +107,7 @@ export function SearchComponent({ query }) {
 
 	return (
 		<Styles>
-			{productsByQuery?.length > 0 &&
+			{productsByQuery?.length > 0 && productsByQuery?.length != 0 &&
 			paginationFromQuery !== null &&
 			paginationFromQuery?.total == productsLength ? (
 				<div
@@ -118,7 +118,7 @@ export function SearchComponent({ query }) {
 					}}>
 					<SubtitleStyle alignSelf='center'>
 						{" "}
-						{productsLength} resultados de:{" "}
+						Resultados: {productsLength} de{" "}
 						{paginationFromQuery?.total}{" "}
 					</SubtitleStyle>
 
@@ -194,7 +194,27 @@ export function SearchComponent({ query }) {
 						Ver más ↪{" "}
 					</a>
 				</div>
-			) : (
+			) 
+			: productsByQuery?.length == 0 ? (
+
+				<div
+					style={{
+						height: 600,
+						display: "flex",
+						alignItems: "center",
+						flexDirection: "column",
+						justifyContent: "center",
+					}}>
+						<SubtitleStyle alignSelf='center'>
+							{productsLength} resultados de:{" "}
+							{paginationFromQuery?.total}{" "}
+						</SubtitleStyle>
+
+						<BodyStyle> No hay productos relacionados a tu búsqueda 😞 </BodyStyle>
+				</div>
+			)
+
+			: (
 				<div
 					style={{
 						height: 600,
