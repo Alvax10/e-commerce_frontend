@@ -1,17 +1,20 @@
-import Router from "next/router";
 import { useProducts } from "lib/hooks";
 import { useEffect, useState } from "react";
 import { getProductsByQuery } from "lib/api";
-import { ProductCard } from "components/card";
+import Router, { useRouter } from "next/router";
 import { SubtitleStyle, BodyStyle } from "ui/typhography/index";
+import { ProductResults, ResultsofPagination } from "ui/results-products";
 
-export function Products({ className, query }) {
+export function Products({ className }) {
+
 	const data = useProducts();
+	const router = useRouter();
 	const [paginationFromQuery, setpaginationFromQuery] = useState(null as any);
 	const [productsByQuery, setProductsByQuery] = useState(null as any);
+	const [queryValue, setQueryValue] = useState(null as any);
 	const [productsLength, setProductsLength] = useState(0);
-	const [queryValue, setQueryValue] = useState(null);
 	const [nextPage, setNextPage] = useState(0);
+	const query = router.query?.q;
 
 	const allProducts = data && !queryValue ? data?.results : null;
 
@@ -90,25 +93,8 @@ export function Products({ className, query }) {
 						padding: 10,
 						flexDirection: "column",
 					}}>
-					<SubtitleStyle>
-						{" "}
-						Resultados: {productsLength} de{" "}
-						{paginationFromQuery?.total}{" "}
-					</SubtitleStyle>
-					<div className='product-container'>
-						{productsByQuery?.map((product) => {
-							return (
-								<ProductCard
-									id={product.objectID}
-									description={product.Description}
-									key={product.objectID}
-									src={product.Images[0].url}
-									productName={product.Name}
-									price={product["unit_price"]}
-								/>
-							);
-						})}
-					</div>
+					<ResultsofPagination data={{ productsLength, paginationFromQuery }} />
+					<ProductResults products={allProducts} />
 
 					<a
 						href='false'
@@ -132,26 +118,8 @@ export function Products({ className, query }) {
 						padding: 10,
 						flexDirection: "column",
 					}}>
-					<SubtitleStyle>
-						{" "}
-						Resultados: {productsLength} de{" "}
-						{paginationFromQuery?.total}{" "}
-					</SubtitleStyle>
-
-					<div className='product-container'>
-						{productsByQuery?.map((product) => {
-							return (
-								<ProductCard
-									id={product.objectID}
-									description={product.Description}
-									key={product.objectID}
-									src={product.Images[0].url}
-									productName={product.Name}
-									price={product["unit_price"]}
-								/>
-							);
-						})}
-					</div>
+					<ResultsofPagination data={{ productsLength, paginationFromQuery }} />
+					<ProductResults products={allProducts} />
 
 					<a
 						onClick={nextProductsPage}
@@ -178,11 +146,7 @@ export function Products({ className, query }) {
 						flexDirection: "column",
 						justifyContent: "center",
 					}}>
-						<SubtitleStyle alignSelf='center'>
-							{productsLength} resultados de:{" "}
-							{paginationFromQuery?.total}{" "}
-						</SubtitleStyle>
-
+						<ResultsofPagination data={{ productsLength, paginationFromQuery }} />
 						<BodyStyle> No hay productos relacionados a tu búsqueda 😞 </BodyStyle>
 				</div>
 			)
@@ -194,22 +158,7 @@ export function Products({ className, query }) {
 						{" "}
 						Buscá el producto que tanto querés!{" "}
 					</SubtitleStyle>
-
-					<div className='product-container'>
-						{allProducts?.map((product) => {
-							return (
-								<ProductCard
-									id={product.objectID}
-									description={product.Description}
-									key={product.objectID}
-									src={product.Images[0].url}
-									alt='product image'
-									productName={product.Name}
-									price={product["unit_price"]}
-								/>
-							);
-						})}
-					</div>
+					<ProductResults products={allProducts} />
 				</div>
 			)}
 		</div>

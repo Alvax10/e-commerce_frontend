@@ -18,7 +18,7 @@ export function HomeComponent({ className }) {
 							{" "}
 							Mirá todos los productos!{" "}
 						</SubtitleStyle>
-						<Link href='/products'>
+						<Link passHref={true} href='/products'>
 							<div style={{ marginBottom: 35 }}>
 								<MyPrimaryButton>
 									{" "}
@@ -56,7 +56,7 @@ export function HomeComponent({ className }) {
 							{" "}
 							Mirá todos los productos!{" "}
 						</SubtitleStyle>
-						<Link href='/products'>
+						<Link passHref={true} href='/products'>
 							<div style={{ marginBottom: 35 }}>
 								<MyPrimaryButton>
 									{" "}

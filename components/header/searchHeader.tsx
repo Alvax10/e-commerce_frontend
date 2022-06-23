@@ -11,7 +11,7 @@ import {
 	ApxDesktopLogo,
 } from "ui/icons/index";
 
-export function SearchHeader({ className, queryValue }) {
+export function SearchHeader({ className }) {
 	const userData = useMe();
 	const [token, setToken] = useState(null);
 	const [toggle, setToggle] = useState(false);
@@ -20,7 +20,7 @@ export function SearchHeader({ className, queryValue }) {
 	function handleSearch(e) {
 		e.preventDefault();
 		const target = e.target;
-		queryValue(target.search.value);
+		Router.push("/search?q=" + target.search.value);
 		target.search.value = "";
 	}
 
@@ -58,7 +58,6 @@ export function SearchHeader({ className, queryValue }) {
 
 	function goToFavs(e) {
 		e.preventDefault();
-
 		token ? Router.push("/user-favs") : Router.push("/signin");
 	}
 

@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { ProductIdComponent } from "./prodcuctId";
 
-export const ProductIdComp = styled(ProductIdComponent)`
+export const ProductIdComp = styled.div`
 
     @media(max-width: 600px) {
         display: flex;

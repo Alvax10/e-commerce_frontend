@@ -1,14 +1,13 @@
 import swal from "sweetalert";
 import Router from "next/router";
 import styled from "styled-components";
-import { useGetProduct } from "lib/hooks";
 import { BodyStyle } from "ui/typhography/index";
 import { HeartIcon, TrashCanIcon } from "ui/icons";
 import {
 	removeProductFromCart,
 	addProductToCart,
-	getSavedToken,
 } from "lib/api";
+import { useMe } from "lib/hooks";
 
 type CardType = {
 	id: string;
@@ -63,22 +62,18 @@ function ProductCardUI({
 	src,
 	price,
 	id,
-	description,
 }: CardType) {
-	const [sendProductData, setSendProductData] = useGetProduct();
-	const token = getSavedToken();
 
+	const userData = useMe();
 	function goToProduct(e) {
 		e.preventDefault();
-		setSendProductData({ productName, price, src, id, description });
 		Router.push("/products/" + id);
 	}
 
 	async function addProductToFavs(e) {
 		e.preventDefault();
-		// console.log(id);
 
-		if (token) {
+		if (userData) {
 			await addProductToCart(id);
 			await swal({
 				title: "Listo!",
@@ -116,13 +111,10 @@ function MyProductsCardUI({
 	src,
 	price,
 	id,
-	description,
 }: CardType) {
-	const [sendProductData, setSendProductData] = useGetProduct();
 
 	function goToProduct(e) {
 		e.preventDefault();
-		setSendProductData({ productName, price, src, id, description });
 		Router.push("/products/" + id);
 	}
 

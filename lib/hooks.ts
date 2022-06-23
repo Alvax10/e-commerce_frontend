@@ -1,15 +1,11 @@
 import useSWR from "swr";
 import { fetchAPI } from "./api";
 import useSWRInmutable from "swr/immutable";
-import { useRecoilState, atom } from "recoil";
-import { recoilPersist } from 'recoil-persist';
-
-const { persistAtom } = recoilPersist();
 
 export function useMe() {
 
     const { data, error } = useSWR("/me", fetchAPI);
-    
+
     if (data?.data) {
         const response = data?.data;
         return response;
@@ -24,7 +20,7 @@ export function useProduct(productId: string) {
 }
 
 export function useProducts() {
-    
+
     const { data, error } = useSWRInmutable("/products", fetchAPI);
     const response = data ? data : null;
     return response;
@@ -36,11 +32,3 @@ export function useGetProductsCart() {
     const response = data ? data : null;
     return response;
 }
-
-const productData = atom({
-    key: 'productData',
-    default: (null as any),
-    effects_UNSTABLE: [persistAtom],
-});
-
-export const useGetProduct = () => useRecoilState(productData);

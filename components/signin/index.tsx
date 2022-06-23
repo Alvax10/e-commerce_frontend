@@ -13,21 +13,12 @@ export function SignInComponent({ className }) {
 		watch,
 		formState: { errors },
 	} = useForm();
-	const [loginData, setLoginData] = useState({
-		email: "",
-		age: 0,
-		username: "",
-	});
+
+	const [email, setEmail] = useState((null as any));
 
 	async function handleEmailForm(loginData) {
-		setLoginData({
-			email: loginData?.email,
-			age: parseInt(loginData?.age),
-			username: loginData?.username,
-		});
-	}
+		setEmail(loginData?.email);
 
-	useEffect(() => {
 		if (
 			(loginData.username != "" && loginData.age != 0) ||
 			("0" && loginData.username != "")
@@ -39,11 +30,11 @@ export function SignInComponent({ className }) {
 				icon: "success",
 			});
 		}
-	}, [loginData]);
+	}
 
 	async function handleCodeForm(formData) {
 		try {
-			await getToken(loginData["email"], formData.code);
+			await getToken(email, formData.code);
 			swal({
 				title: "Bienvenido!",
 				text: "Te has logueado correctamente!",
@@ -67,7 +58,7 @@ export function SignInComponent({ className }) {
 
 	return (
 		<div className={className}>
-			{loginData.email ? (
+			{email ? (
 				<form
 					onSubmit={handleSubmit(handleCodeForm)}
 					className='code-form'>
@@ -108,7 +99,7 @@ export function SignInComponent({ className }) {
 									margin: 1,
 								}}>
 								{" "}
-								Se puede hasta 5 caracteres :({" "}
+								Se puede hasta 5 caracteres : {" "}
 							</span>
 						)}
 					</div>

@@ -43,7 +43,7 @@ export function Footer({ className }) {
 		e.preventDefault();
 		setToken(null);
 		localStorage.clear();
-		Router.push("/home");
+		Router.push("/");
 	}
 
 	return (

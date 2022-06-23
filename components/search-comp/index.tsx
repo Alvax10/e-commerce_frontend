@@ -1,9 +1,9 @@
-import Router from "next/router";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { getProductsByQuery } from "lib/api";
-import { ProductCard } from "components/card";
-import { SubtitleStyle, BodyStyle } from "ui/typhography/index";
+import Router, { useRouter } from "next/router";
+import { BodyStyle } from "ui/typhography/index";
+import { ProductResults, ResultsofPagination } from "ui/results-products";
 
 const Styles = styled.div`
 	@media (max-width: 500px) {
@@ -32,13 +32,16 @@ const Styles = styled.div`
 	}
 `;
 
-export function SearchComponent({ query }) {
+export function SearchComponent() {
+
+	const router = useRouter();
 	const [paginationFromQuery, setpaginationFromQuery] = useState(null as any);
 	const [productsByQuery, setProductsByQuery] = useState(null as any);
+	const [queryValue, setQueryValue] = useState(null as any);
 	const [productsLength, setProductsLength] = useState(0);
-	const [queryValue, setQueryValue] = useState(null);
 	const [nextPage, setNextPage] = useState(0);
-
+	const query = router.query?.q;
+	
 	useEffect(() => {
 		query && query != queryValue ? setQueryValue(query) : queryValue;
 	}, [query]);
@@ -116,26 +119,8 @@ export function SearchComponent({ query }) {
 						padding: 10,
 						flexDirection: "column",
 					}}>
-					<SubtitleStyle alignSelf='center'>
-						{" "}
-						Resultados: {productsLength} de{" "}
-						{paginationFromQuery?.total}{" "}
-					</SubtitleStyle>
-
-					<div className='product-container'>
-						{productsByQuery?.map((product) => {
-							return (
-								<ProductCard
-									id={product.objectID}
-									description={product.Description}
-									key={product.objectID}
-									src={product.Images[0].url}
-									productName={product.Name}
-									price={product["unit_price"]}
-								/>
-							);
-						})}
-					</div>
+					<ResultsofPagination data={{ productsLength, paginationFromQuery }} />
+					<ProductResults products={productsByQuery} />
 
 					<a
 						href='false'
@@ -159,26 +144,8 @@ export function SearchComponent({ query }) {
 						padding: 10,
 						flexDirection: "column",
 					}}>
-					<SubtitleStyle alignSelf='center'>
-						{" "}
-						{productsLength} resultados de:{" "}
-						{paginationFromQuery?.total}{" "}
-					</SubtitleStyle>
-
-					<div className='product-container'>
-						{productsByQuery?.map((product) => {
-							return (
-								<ProductCard
-									id={product.objectID}
-									description={product.Description}
-									key={product.objectID}
-									src={product.Images[0].url}
-									productName={product.Name}
-									price={product["unit_price"]}
-								/>
-							);
-						})}
-					</div>
+					<ResultsofPagination data={{ productsLength, paginationFromQuery }} />
+					<ProductResults products={productsByQuery} />
 
 					<a
 						href='false'
@@ -205,12 +172,8 @@ export function SearchComponent({ query }) {
 						flexDirection: "column",
 						justifyContent: "center",
 					}}>
-						<SubtitleStyle alignSelf='center'>
-							{productsLength} resultados de:{" "}
-							{paginationFromQuery?.total}{" "}
-						</SubtitleStyle>
-
-						<BodyStyle> No hay productos relacionados a tu búsqueda 😞 </BodyStyle>
+					<ResultsofPagination data={{ productsLength, paginationFromQuery }} />
+					<BodyStyle> No hay productos relacionados a tu búsqueda 😞 </BodyStyle>
 				</div>
 			)
 

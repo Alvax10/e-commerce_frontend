@@ -13,12 +13,6 @@ export const ProductsComp = styled(Products)`
             flex-direction: column;
         }
 
-        .product-container {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-        }
-
         .body {
             max-width: 500px;
         }
@@ -28,13 +22,6 @@ export const ProductsComp = styled(Products)`
 
         .container {
             text-align: center;
-        }
-
-        .product-container {
-            display: grid;
-            align-items: center;
-            justify-items: center;
-            grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
         }
 
         .productos-destacados p.ver-mas {

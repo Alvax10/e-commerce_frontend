@@ -1,8 +1,6 @@
-import Router from "next/router";
-import { useEffect } from "react";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { useGetProduct } from "lib/hooks";
 import { createBuyingOrder } from "lib/api";
 import { SecondaryButton } from "ui/buttons";
 import { SubtitleStyle } from "ui/typhography";
@@ -35,7 +33,7 @@ const FormStyle = styled.form`
 `;
 
 export function BuyingForm() {
-	const [getProductData, setGetProductData] = useGetProduct();
+	const router = useRouter();
 	const {
 		register,
 		handleSubmit,
@@ -43,21 +41,14 @@ export function BuyingForm() {
 	} = useForm();
 
 	async function submitHandler(additionalInfo) {
-		// console.log("El id del producto: ", getProductData.id);
+		
 		const order = await createBuyingOrder(
-			getProductData.id,
+			(router.query?.productId as string),
 			additionalInfo,
 		);
 		// console.log("ESTA ES LA ORDEN: ", order);
 		window.location.replace(order?.url);
-		setGetProductData(null as any);
 	}
-
-	useEffect(() => {
-		if (!getProductData) {
-			Router.push("/");
-		}
-	}, []);
 
 	return (
 		<FormStyle onSubmit={handleSubmit(submitHandler)}>
