@@ -1,5 +1,4 @@
 import swal from "sweetalert";
-import Image from "next/image";
 import Router from "next/router";
 import { useMe } from "lib/hooks";
 import { useProduct } from "lib/hooks";
@@ -28,11 +27,7 @@ export function ProductIdComponent({ productId }) {
 
 	return <ProductIdComp>
 			
-			<Image className='product-image'
-				src={getProductData?.image[0]?.url}
-				alt='products image'
-			/>
-			
+			<img src={getProductData?.image[0]?.url} className='product-image' alt='products image' />
 			<SubtitleStyle className='product-name'>
 				{" "}
 				{getProductData?.productName}{" "}
