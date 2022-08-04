@@ -1,4 +1,8 @@
-# E-commerce "apxShop" dwf-m10
+# apx-challenge-m10
 
-This e-commerce was made with Next.js and React
-url: https://dwf-m10.vercel.app/
+## URL:
+https://dwf-m10.vercel.app/
+
+### About it
+
+This is a basic e-commerce made using `Typescript`, `Next.js`, `React` and the backend of my past project `"e-commerce_backend"`.
